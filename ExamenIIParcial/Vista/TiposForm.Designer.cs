@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.CodigoTextBox = new System.Windows.Forms.TextBox();
             this.ExistenciaTextBox = new System.Windows.Forms.TextBox();
@@ -44,7 +45,9 @@
             this.ModificarButton = new System.Windows.Forms.Button();
             this.NuevoButton = new System.Windows.Forms.Button();
             this.ProductosDataGridView = new System.Windows.Forms.DataGridView();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -154,6 +157,7 @@
             this.GuardarButton.TabIndex = 20;
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
             // ModificarButton
             // 
@@ -163,6 +167,7 @@
             this.ModificarButton.TabIndex = 19;
             this.ModificarButton.Text = "Modificar";
             this.ModificarButton.UseVisualStyleBackColor = true;
+            this.ModificarButton.Click += new System.EventHandler(this.ModificarButton_Click);
             // 
             // NuevoButton
             // 
@@ -186,6 +191,10 @@
             this.ProductosDataGridView.RowTemplate.Height = 33;
             this.ProductosDataGridView.Size = new System.Drawing.Size(1013, 225);
             this.ProductosDataGridView.TabIndex = 23;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // TiposForm
             // 
@@ -212,6 +221,7 @@
             this.Text = "TiposForm";
             this.Load += new System.EventHandler(this.TiposForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,5 +245,6 @@
         private Button ModificarButton;
         private Button NuevoButton;
         private DataGridView ProductosDataGridView;
+        private ErrorProvider errorProvider1;
     }
 }

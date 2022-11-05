@@ -191,6 +191,23 @@ namespace Vista
                 MessageBox.Show("Debe seleccionar un registro", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private async void EliminarButton_Click(object sender, EventArgs e)
+        {
+            if (UsuariosDataGridView.SelectedRows.Count > 0)
+            {
+                bool elimino = await userDatos.EliminarAsync(UsuariosDataGridView.CurrentRow.Cells["Codigo"].Value.ToString());
+                if (elimino)
+                {
+                    LlenarDataGrid();
+                    MessageBox.Show("Usuario Eliminado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Usuario no se pudo eliminar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 
 }

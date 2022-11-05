@@ -217,6 +217,7 @@
             this.EliminarButton.TabIndex = 16;
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.UseVisualStyleBackColor = true;
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
             // CancelarButton
             // 

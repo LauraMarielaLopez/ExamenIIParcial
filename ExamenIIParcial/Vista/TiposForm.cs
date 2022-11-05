@@ -27,6 +27,10 @@ namespace Vista
              
 
         }
+        private async void LlenarProductos()
+        {
+            ProductosDataGridView.DataSource = await proDatos.DevolverListaAsync();
+        }
         private void HabilitarControles()
         {
             CodigoTextBox.Enabled = true;
@@ -57,10 +61,123 @@ namespace Vista
             
         }
 
+
         private void NuevoButton_Click(object sender, EventArgs e)
         {
             tipoOperacion = "Nuevo";
             HabilitarControles();
+        }
+
+        private async void GuardarButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(CodigoTextBox.Text))
+            {
+                errorProvider1.SetError(CodigoTextBox, "Ingrese el código");
+                CodigoTextBox.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(DescripcionTextBox.Text))
+            {
+                errorProvider1.SetError(DescripcionTextBox, "Ingrese una descripción");
+                DescripcionTextBox.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(PrecioTextBox.Text))
+            {
+                errorProvider1.SetError(PrecioTextBox, "Ingrese un precio");
+                PrecioTextBox.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(ExistenciaTextBox.Text))
+            {
+                errorProvider1.SetError(ExistenciaTextBox, "Ingrese una existencia");
+                ExistenciaTextBox.Focus();
+                return;
+            }
+
+            producto = new Producto();
+            
+
+            producto.Codigo = Convert.ToInt32(CodigoTextBox.Text);
+            producto.Descripcion = DescripcionTextBox.Text;
+            producto.Existencia = Convert.ToInt32(ExistenciaTextBox.Text);
+            producto.Precio = Convert.ToDecimal(PrecioTextBox.Text);
+            producto.FechaCreacion = FechaDateTimePicker.Value;
+
+            if (tipoOperacion == "Nuevo")
+            {
+                bool inserto = await proDatos.InsertarAsync(producto);
+                if (inserto)
+                {
+                    LlenarProductos();
+                    LimpiarControles();
+                    DesabilitarControles();
+                    MessageBox.Show("Producto Guardado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Producto no se pudo guardar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (tipoOperacion == "Modificar")
+            {
+                bool modifico = await proDatos.ActualizarAsync(producto);
+                if (modifico)
+                {
+                    LlenarProductos();
+                    LimpiarControles();
+                    DesabilitarControles();
+                    MessageBox.Show("Producto Guardado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Producto no se pudo guardar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private async void ModificarButton_Click(object sender, EventArgs e)
+        {
+            if (ProductosDataGridView.SelectedRows.Count > 0)
+            {
+                tipoOperacion = "Modificar";
+                HabilitarControles();
+                CodigoTextBox.ReadOnly = true;
+                CodigoTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Codigo"].Value.ToString();
+                DescripcionTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Descripcion"].Value.ToString();
+                ExistenciaTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Existencia"].Value.ToString();
+                PrecioTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Precio"].Value.ToString();
+                FechaDateTimePicker.Value = Convert.ToDateTime(ProductosDataGridView.CurrentRow.Cells["FechaCreacion"].Value);
+
+              
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private async void EliminarButton_Click(object sender, EventArgs e)
+        {
+            if (ProductosDataGridView.SelectedRows.Count > 0)
+            {
+                bool elimino = await proDatos.EliminarAsync(ProductosDataGridView.CurrentRow.Cells["Codigo"].Value.ToString());
+
+                if (elimino)
+                {
+                    LlenarProductos();
+                    MessageBox.Show("Producto Eliminado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Producto no se pudo eliminar", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
