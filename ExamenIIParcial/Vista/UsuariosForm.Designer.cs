@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.CodigoTextBox = new System.Windows.Forms.TextBox();
             this.NombreTextBox = new System.Windows.Forms.TextBox();
@@ -37,7 +38,7 @@
             this.CorreoTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.RolComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.EstaActivoCheckBox = new System.Windows.Forms.CheckBox();
             this.UsuariosDataGridView = new System.Windows.Forms.DataGridView();
@@ -46,12 +47,15 @@
             this.GuardarButton = new System.Windows.Forms.Button();
             this.EliminarButton = new System.Windows.Forms.Button();
             this.CancelarButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.UsuariosDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(59, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 28);
@@ -60,6 +64,7 @@
             // 
             // CodigoTextBox
             // 
+            this.CodigoTextBox.Enabled = false;
             this.CodigoTextBox.Location = new System.Drawing.Point(160, 54);
             this.CodigoTextBox.Name = "CodigoTextBox";
             this.CodigoTextBox.Size = new System.Drawing.Size(293, 34);
@@ -67,6 +72,7 @@
             // 
             // NombreTextBox
             // 
+            this.NombreTextBox.Enabled = false;
             this.NombreTextBox.Location = new System.Drawing.Point(592, 50);
             this.NombreTextBox.Name = "NombreTextBox";
             this.NombreTextBox.Size = new System.Drawing.Size(293, 34);
@@ -75,6 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Enabled = false;
             this.label2.Location = new System.Drawing.Point(489, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 28);
@@ -83,6 +90,7 @@
             // 
             // ClaveTextBox
             // 
+            this.ClaveTextBox.Enabled = false;
             this.ClaveTextBox.Location = new System.Drawing.Point(160, 112);
             this.ClaveTextBox.Name = "ClaveTextBox";
             this.ClaveTextBox.Size = new System.Drawing.Size(293, 34);
@@ -91,6 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(59, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 28);
@@ -99,6 +108,7 @@
             // 
             // CorreoTextBox
             // 
+            this.CorreoTextBox.Enabled = false;
             this.CorreoTextBox.Location = new System.Drawing.Point(592, 118);
             this.CorreoTextBox.Name = "CorreoTextBox";
             this.CorreoTextBox.Size = new System.Drawing.Size(293, 34);
@@ -107,6 +117,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Enabled = false;
             this.label4.Location = new System.Drawing.Point(489, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 28);
@@ -116,26 +127,29 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Enabled = false;
             this.label5.Location = new System.Drawing.Point(59, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 28);
             this.label5.TabIndex = 8;
             this.label5.Text = "Rol";
             // 
-            // comboBox1
+            // RolComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.RolComboBox.Enabled = false;
+            this.RolComboBox.FormattingEnabled = true;
+            this.RolComboBox.Items.AddRange(new object[] {
             "Adminsitrador",
             "Usuario"});
-            this.comboBox1.Location = new System.Drawing.Point(160, 170);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(182, 36);
-            this.comboBox1.TabIndex = 9;
+            this.RolComboBox.Location = new System.Drawing.Point(160, 170);
+            this.RolComboBox.Name = "RolComboBox";
+            this.RolComboBox.Size = new System.Drawing.Size(182, 36);
+            this.RolComboBox.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Enabled = false;
             this.label6.Location = new System.Drawing.Point(489, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 28);
@@ -145,6 +159,7 @@
             // EstaActivoCheckBox
             // 
             this.EstaActivoCheckBox.AutoSize = true;
+            this.EstaActivoCheckBox.Enabled = false;
             this.EstaActivoCheckBox.Location = new System.Drawing.Point(613, 194);
             this.EstaActivoCheckBox.Name = "EstaActivoCheckBox";
             this.EstaActivoCheckBox.Size = new System.Drawing.Size(22, 21);
@@ -172,6 +187,7 @@
             this.NuevoButton.TabIndex = 13;
             this.NuevoButton.Text = "Nuevo";
             this.NuevoButton.UseVisualStyleBackColor = true;
+            this.NuevoButton.Click += new System.EventHandler(this.NuevoButton_Click);
             // 
             // ModificarButton
             // 
@@ -181,6 +197,7 @@
             this.ModificarButton.TabIndex = 14;
             this.ModificarButton.Text = "Modificar";
             this.ModificarButton.UseVisualStyleBackColor = true;
+            this.ModificarButton.Click += new System.EventHandler(this.ModificarButton_Click);
             // 
             // GuardarButton
             // 
@@ -190,6 +207,7 @@
             this.GuardarButton.TabIndex = 15;
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
             // EliminarButton
             // 
@@ -208,6 +226,11 @@
             this.CancelarButton.TabIndex = 17;
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.UseVisualStyleBackColor = true;
+            this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // UsuariosForm
             // 
@@ -222,7 +245,7 @@
             this.Controls.Add(this.UsuariosDataGridView);
             this.Controls.Add(this.EstaActivoCheckBox);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.RolComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.CorreoTextBox);
             this.Controls.Add(this.label4);
@@ -237,6 +260,7 @@
             this.Text = "UsuariosForm";
             this.Load += new System.EventHandler(this.UsuariosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UsuariosDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,7 +277,7 @@
         private TextBox CorreoTextBox;
         private Label label4;
         private Label label5;
-        private ComboBox comboBox1;
+        private ComboBox RolComboBox;
         private Label label6;
         private CheckBox EstaActivoCheckBox;
         private DataGridView UsuariosDataGridView;
@@ -262,5 +286,6 @@
         private Button GuardarButton;
         private Button EliminarButton;
         private Button CancelarButton;
+        private ErrorProvider errorProvider1;
     }
 }
