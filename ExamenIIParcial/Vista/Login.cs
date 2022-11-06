@@ -34,8 +34,12 @@ namespace Vista
             if (valido)
             {
                 Menu formulario = new Menu();
-                
-                
+                //System.Security.Principal.GenericIdentity identity = new System.Security.Principal.GenericIdentity(CodigoUsuarioTextBox.Text);
+                //System.Security.Principal.GenericPrincipal principal = new System.Security.Principal.GenericPrincipal(identity, null);
+                //System.Threading.Thread.CurrentPrincipal = principal;
+                VariableGlobal.UsuarioLogin = CodigoUsuarioTextBox.Text;
+
+
 
                 Hide();
 

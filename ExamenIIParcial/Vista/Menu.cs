@@ -28,5 +28,22 @@ namespace Vista
             TiposForm tiposForm = new TiposForm();
             tiposForm.Show();   
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            TicketsForm ticketsForm = new TicketsForm();
+            ticketsForm.Show(); 
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+           
+        }
+
+        private void ticketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TicketsForm ticketsForm = new TicketsForm();
+            ticketsForm.Show();
+        }
     }
 }
