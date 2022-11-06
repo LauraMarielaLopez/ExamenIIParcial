@@ -22,11 +22,7 @@ namespace Vista
         Producto producto = new Producto();
         string tipoOperacion = string.Empty;
 
-        private void TiposForm_Load(object sender, EventArgs e)
-        {
-             
-
-        }
+       
         private async void LlenarProductos()
         {
             ProductosDataGridView.DataSource = await proDatos.DevolverListaAsync();
@@ -177,6 +173,33 @@ namespace Vista
             else
             {
                 MessageBox.Show("Debe seleccionar un registro", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void TiposForm_Load(object sender, EventArgs e)
+        {
+            LlenarProductos();
+
+        }
+
+        private void ExistenciaTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void PrecioTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }
